@@ -11,9 +11,9 @@ public interface IClientService {
 
     /**
      * @param id - input id
-     * @return Client details based on a given id
+     * @return Client details based on a given mobileNumber
      */
-    ClientDto fetchClient(Long id);
+    ClientDto fetchClient(String mobileNumber);
 
     /**
      * @param clientDto - clientDto object

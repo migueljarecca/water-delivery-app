@@ -2,6 +2,7 @@ package com.miguel.app.models.entity;
 
 import java.math.BigDecimal;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,7 +19,7 @@ public class Client extends BaseEntity {
 
     private String name;
     private String lastName;
-    private String phone;
+    private String mobileNumber;
     private String address;
 
     private String country;
@@ -27,19 +28,22 @@ public class Client extends BaseEntity {
     private String district;
     private String postalCode;
 
+    @Column(precision = 9, scale = 6)
     private BigDecimal latitude;
+
+    @Column(precision = 9, scale = 6)
     private BigDecimal longitude;
 
     
     public Client() {
     }
 
-    public Client(Long id, String name, String lastName, String phone, String address, String country, String state,
+    public Client(Long id, String name, String lastName, String mobileNumber, String address, String country, String state,
             String province, String district, String postalCode, BigDecimal latitude, BigDecimal longitude) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
-        this.phone = phone;
+        this.mobileNumber = mobileNumber;
         this.address = address;
         this.country = country;
         this.state = state;
@@ -81,12 +85,12 @@ public class Client extends BaseEntity {
 
 
     public String getPhone() {
-        return phone;
+        return mobileNumber;
     }
 
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhone(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
     }
 
 
@@ -171,7 +175,7 @@ public class Client extends BaseEntity {
 
     @Override
     public String toString() {
-        return "Client [id=" + id + ", name=" + name + ", lastName=" + lastName + ", phone=" + phone + ", address="
+        return "Client [id=" + id + ", name=" + name + ", lastName=" + lastName + ", mobileNumber=" + mobileNumber + ", address="
                 + address + ", country=" + country + ", state=" + state + ", province=" + province + ", district="
                 + district + ", postalCode=" + postalCode + ", latitude=" + latitude + ", longitude=" + longitude + "]";
     }

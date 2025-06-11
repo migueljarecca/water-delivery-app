@@ -25,4 +25,25 @@ public class ClientMapper {
 
         return clientDto;
     }
+
+    public static Client mapToClient(ClientDto clientDto) {
+
+        Client client = new Client();
+
+        client.setName(clientDto.getName());
+        client.setLastName(clientDto.getLastName());
+        client.setPhone(clientDto.getPhone());
+        client.setAddress(clientDto.getAddress());
+
+        client.setCountry(clientDto.getCountry());
+        client.setState(clientDto.getState());
+        client.setProvince(clientDto.getProvince());
+        client.setDistrict(clientDto.getDistrict());
+        client.setPostalCode(clientDto.getPostalCode());
+
+        client.setLatitude(clientDto.getLatitude());
+        client.setLongitude(clientDto.getLongitude());
+        
+        return client;
+    }
 }
