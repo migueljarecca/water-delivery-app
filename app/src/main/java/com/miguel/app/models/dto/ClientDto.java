@@ -4,9 +4,10 @@ import java.math.BigDecimal;
 
 public class ClientDto {
     
+    private Long id;
     private String name;
     private String lastName;
-    private String phone;
+    private String mobileNumber;
     private String address;
 
     private String country;
@@ -22,11 +23,12 @@ public class ClientDto {
     public ClientDto() {
     }
 
-    public ClientDto(String name, String lastName, String phone, String address, String country, String state,
+    public ClientDto(Long id,String name, String lastName, String mobileNumber, String address, String country, String state,
             String province, String district, String postalCode, BigDecimal latitude, BigDecimal longitude) {
+        this.id = id;
         this.name = name;
         this.lastName = lastName;
-        this.phone = phone;
+        this.mobileNumber = mobileNumber;
         this.address = address;
         this.country = country;
         this.state = state;
@@ -37,6 +39,12 @@ public class ClientDto {
         this.longitude = longitude;
     }
 
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
     public String getName() {
         return name;
     }
@@ -49,11 +57,11 @@ public class ClientDto {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    public String getPhone() {
-        return phone;
+    public String getMobileNumber() {
+        return mobileNumber;
     }
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
     }
     public String getAddress() {
         return address;
@@ -106,9 +114,12 @@ public class ClientDto {
 
     @Override
     public String toString() {
-        return "ClientDto [name=" + name + ", lastName=" + lastName + ", phone=" + phone + ", address=" + address
-                + ", country=" + country + ", state=" + state + ", province=" + province + ", district=" + district
-                + ", postalCode=" + postalCode + ", latitude=" + latitude + ", longitude=" + longitude + "]";
+        return "ClientDto [id=" + id + ", name=" + name + ", lastName=" + lastName + ", mobileNumber=" + mobileNumber
+                + ", address=" + address + ", country=" + country + ", state=" + state + ", province=" + province
+                + ", district=" + district + ", postalCode=" + postalCode + ", latitude=" + latitude + ", longitude="
+                + longitude + "]";
     }
+
+    
     
 }

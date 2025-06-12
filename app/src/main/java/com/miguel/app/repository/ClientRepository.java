@@ -12,7 +12,7 @@ import com.miguel.app.models.entity.Client;
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Long> {
 
-    @Query("SELECT c FROM Client c WHERE c.phone = :phone")
-    Optional<Client> findByPhone (@Param("phone") String phone );
+    @Query("SELECT c FROM Client c WHERE c.mobileNumber = :mobileNumber")
+    Optional<Client> findByMobileNumber (@Param("mobileNumber") String mobileNumber );
 
 }

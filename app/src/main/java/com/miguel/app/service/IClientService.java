@@ -10,10 +10,10 @@ public interface IClientService {
     void createClient(ClientDto clientDto);
 
     /**
-     * @param id - input id
-     * @return Client details based on a given mobileNumber
+     * @param mobileNumber - input id
+     * @return Client details based on a given id
      */
-    ClientDto fetchClient(String mobileNumber);
+    ClientDto fetchClient(Long id);
 
     /**
      * @param clientDto - clientDto object

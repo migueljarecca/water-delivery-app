@@ -84,12 +84,12 @@ public class Client extends BaseEntity {
     }
 
 
-    public String getPhone() {
+    public String getMobileNumber() {
         return mobileNumber;
     }
 
 
-    public void setPhone(String mobileNumber) {
+    public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
 

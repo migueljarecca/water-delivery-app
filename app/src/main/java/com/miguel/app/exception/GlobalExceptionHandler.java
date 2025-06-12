@@ -32,7 +32,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorResponseDto> handleResourceNotFoundException(
-                ClientAlreadyExistsException exception, WebRequest webRequest) {
+                ResourceNotFoundException exception, WebRequest webRequest) {
 
         ErrorResponseDto errorResponseDto = new ErrorResponseDto(
             webRequest.getDescription(false),

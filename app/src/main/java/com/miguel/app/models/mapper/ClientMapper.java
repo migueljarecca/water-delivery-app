@@ -5,13 +5,12 @@ import com.miguel.app.models.entity.Client;
 
 public class ClientMapper {
     
-    public static ClientDto mapToClientDto(Client client) {
+    public static ClientDto mapToClientDto(Client client, ClientDto clientDto) {
 
-        ClientDto clientDto = new ClientDto();
-
+        clientDto.setId(client.getId());
         clientDto.setName(client.getName());
         clientDto.setLastName(client.getLastName());
-        clientDto.setPhone(client.getPhone());
+        clientDto.setMobileNumber(client.getMobileNumber());
         clientDto.setAddress(client.getAddress());
 
         clientDto.setCountry(client.getCountry());
@@ -26,14 +25,12 @@ public class ClientMapper {
         return clientDto;
     }
 
-    public static Client mapToClient(ClientDto clientDto) {
-
-        Client client = new Client();
+    public static Client mapToClient(ClientDto clientDto, Client client) {
 
         client.setName(clientDto.getName());
         client.setLastName(clientDto.getLastName());
-        client.setPhone(clientDto.getPhone());
         client.setAddress(clientDto.getAddress());
+        client.setMobileNumber(clientDto.getMobileNumber());
 
         client.setCountry(clientDto.getCountry());
         client.setState(clientDto.getState());
