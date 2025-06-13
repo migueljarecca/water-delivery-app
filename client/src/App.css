@@ -1,0 +1,22 @@
+
+
+/* top-banner */
+/* ============================================================ */
+.top-banner {
+  display: flex;
+  padding: 1rem;
+  background-color: #cecece;
+  font-size: 2rem;
+  justify-content: center;
+}
+
+
+/* header */
+/* ============================================================ */
+
+.header {
+  display: flex;
+  padding: 1rem;
+  background-color: #dfdede;
+  font-size: 2rem;
+}
