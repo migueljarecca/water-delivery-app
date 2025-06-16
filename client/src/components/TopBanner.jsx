@@ -1,5 +1,5 @@
 
-export const Banner = () => {
+export const TopBanner = () => {
 
     return(
         <div className="top-banner">

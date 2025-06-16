@@ -1,25 +1,33 @@
-import { Logo } from "../assets/icons/logo"
+import { Link, NavLink } from "react-router"
+import { Logo, ShoppingCart, User } from "../assets/icons/icons"
 
 export const Header = () => {
 
     return(
         <header className="header">
 
-            <a href="/" className="logo" aria-label="Ir a inicio">
+            <NavLink href="/" end className="logo" aria-label="Ir a inicio">
                 <Logo />
-            </a>
+            </NavLink>
 
             <div className="header-div">
                 <nav className="navigation">
                     <ul>
-                        <li>QUIENES SOMOS</li>
-                        <li>PRODUCTOS</li>
-                        <li>PREGUNTAS FRECUENTES</li>
-                        <li>CONTACTO</li>
+                        <li><NavLink to={"/about-us"}>QUIENES SOMOS</NavLink></li>
+                        <li><NavLink to={"/products"}>PRODUCTOS</NavLink></li>
+                        <li><NavLink to={"/faq"}>PREGUNTAS FRECUENTES</NavLink></li>
+                        <li><NavLink to={"/contact"}>CONTACTO</NavLink></li>
                     </ul>
                 </nav>
+            </div>
 
-                
+            <div className="header-icons-container">
+                <Link to={"/login"} className="header-icon">
+                    <User />
+                </Link>
+                <Link to={"/cart"} className="header-icon">
+                    <ShoppingCart />
+                </Link>
             </div>
         </header>
     )

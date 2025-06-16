@@ -50,6 +50,25 @@
   list-style: none;
 }
 
-.navigation ul li {
+.navigation ul li a {
   font-size: 1.8rem;
+  text-decoration: none;
+  color: #004b87;
+}
+
+.header .header-icons-container {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.header-icons-container .header-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.header-icon svg {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  color: #004b87;
 }
