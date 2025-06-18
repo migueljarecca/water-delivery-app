@@ -1,3 +1,19 @@
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #eaeaea;
+
+  --color-text-blue-dark: #13294b;
+  --color-text-secondary: #004b87;;
+  --color-text-tertiary: #0077c8;
+
+
+
+
+  --color-primary: #13294b;
+  --color-secondary: #004b87;
+  --color-tertiary: #0077c8;
+}
+
 
 
 /* top-banner */
@@ -33,7 +49,7 @@
 }
 
 .header .logo svg {
-  color: #004b87;
+  color: var(--color-text-primary);
 }
 
 .header .header-div {
@@ -53,7 +69,7 @@
 .navigation ul li a {
   font-size: 1.8rem;
   text-decoration: none;
-  color: #004b87;
+  color: var(--color-text-primary);
 }
 
 .header .header-icons-container {
@@ -72,3 +88,90 @@
   aspect-ratio: 1 / 1;
   color: #004b87;
 }
+
+
+/* products */
+/* ============================================================ */
+
+.products {
+  padding: 5rem 12%;
+  background: var(--bg-primary);
+}
+
+.products .products-container {
+
+}
+
+.products-container .products-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.products-text h2 {
+  font-size: 3.9rem;
+  padding-bottom: 4rem;
+  color: var(--color-secondary);
+}
+
+.products-text p {
+  font-size: 1.9rem;
+  padding: 0 15rem;
+}
+
+.products-container .products-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  padding: 5rem 0;
+  gap: 2rem;
+}
+
+.products-content .product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border: 1px solid #004b87;
+  padding: 1.5rem;
+  border-radius: 7px;
+}
+
+.product-card .wrapper-image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.product-card .wrapper-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-card .wrapper-details {
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+}
+
+.wrapper-details .product-title {
+  font-size: 1.9rem;
+}
+
+.wrapper-details .product-price {
+  font-size: 1.6rem;
+}
+
+.product-card .product-card-button {
+  padding: 1.2rem;
+  font-size: 1.6rem;
+  letter-spacing: .1rem;
+  background: #0077c8;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 7px;
+  cursor: pointer;
+  border: none;
+}
+
