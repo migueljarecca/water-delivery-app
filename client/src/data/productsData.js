@@ -1,5 +1,5 @@
 
-const products = [
+const productsData = [
 
     {
         id : 1,
@@ -35,4 +35,4 @@ const products = [
 
 ]
 
-export default products;
+export default productsData;

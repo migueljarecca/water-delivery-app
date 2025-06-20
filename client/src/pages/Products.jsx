@@ -1,12 +1,17 @@
-import { useState } from 'react';
-import products from '../data/products';
+import { useEffect } from 'react';
 import { ProductCard } from '../components/ProductCard';
+import { useProduct } from '../hooks/useProduct';
 
 export const Products = () => {
 
-    const [productsList] = useState(products);
 
-    console.log(JSON.stringify(productsList, null, 2));
+    const { getProducts, products } = useProduct();
+
+    // console.log(JSON.stringify(productsList, null, 2));
+
+    useEffect(() => {
+        getProducts();
+    },[]);
 
     return(
         <main className="products">
@@ -22,7 +27,7 @@ export const Products = () => {
                 </div>
 
                 <div className="products-content">
-                    {productsList.map(product => (
+                    {products.map(product => (
                         <ProductCard key={product.id} product={product}/>
                     ))}
                 </div>
