@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
 import { ProductCard } from '../components/ProductCard';
 import { useProduct } from '../hooks/useProduct';
+import { useCart } from '../hooks/useCart';
 
 export const Products = () => {
 
 
     const { getProducts, products } = useProduct();
+    const { handlerAddCart } = useCart();
 
     // console.log(JSON.stringify(productsList, null, 2));
 
@@ -28,7 +30,7 @@ export const Products = () => {
 
                 <div className="products-content">
                     {products.map(product => (
-                        <ProductCard key={product.id} product={product}/>
+                        <ProductCard key={product.id} product={product} handlerAddCart={handlerAddCart}/>
                     ))}
                 </div>
 

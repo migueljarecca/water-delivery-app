@@ -1,18 +1,30 @@
+import { Link } from "react-router-dom"
 
-export const ProductCard = ({ product }) => {
+export const ProductCard = ({ product, handlerAddCart }) => {
+
+    if (!product) {
+        return <div>No hay productos disponibles</div>
+    }
+
+    const{ id, img, title, price } = product;
 
     return(
         <div className="product-card">
-            <div className="wrapper-image">
-                <img src={product.img} alt="" />
-            </div>
+            <Link to={"/products/details/" +id}>
+                <div className="wrapper-image">
+                    <img src={img} alt="" />
+                </div>
+            </Link>
             
             <div className="wrapper-details">
-                <h3 className="product-title">{product.title}</h3>
-                <p className="product-price">Precio S/. {product.price}</p>
+                <h3 className="product-title">{title}</h3>
+                <p className="product-price">Precio S/. {price}</p>
             </div>
             
-            <button className="product-card-button">
+            <button 
+                className="product-card-button"
+                onClick={() => handlerAddCart(product)}
+                >
                 Agregar al carito
             </button>
         </div>

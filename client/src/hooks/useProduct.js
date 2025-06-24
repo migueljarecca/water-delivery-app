@@ -7,7 +7,7 @@
         const products = useSelector((state)  => state.product.products); 
         const dispatch = useDispatch();
 
-        // console.log('products ' + products);
+        console.log('products ', products);
 
         const getProducts = async () => {
             dispatch(loadingToProduct(productsData))
