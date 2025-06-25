@@ -53,6 +53,7 @@ export const ShopCartCard = ({
                 <p className="product-cart-price">S/. {price}</p>
 
             </div>
+
             
         </div>
     )

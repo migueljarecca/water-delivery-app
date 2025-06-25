@@ -1,4 +1,4 @@
-import { Outlet } from "react-router"
+import { Link, Outlet } from "react-router"
 import { useCart } from "../../hooks/useCart"
 import { ShopCartCard } from "../../components/ShopCartCard";
 import { CartSummary } from "../../components/CartSummary";
@@ -6,7 +6,11 @@ import { CartSummary } from "../../components/CartSummary";
 
 export const ShopCartPage = () => {
 
-    const { cart, handlerRemoveCart, handlerUpdateIncreaseQuantity, handlerUpdateDecreaseQuantity } = useCart();
+    const { cart, 
+            handlerRemoveCart, 
+            handlerUpdateIncreaseQuantity, 
+            handlerUpdateDecreaseQuantity, 
+        } = useCart();
     
 
     return(
@@ -30,12 +34,16 @@ export const ShopCartPage = () => {
                         )}
                     </div>
 
+                    <Link to={"/products"}>Seguir comprando</Link>
+
                 </div>
 
                 <div className="shop-cart-div-right">
                     <h1>Resumen</h1>
 
-                    <CartSummary />    
+                    <CartSummary />
+
+
                     {/* <Outlet /> */}
 
                 </div>

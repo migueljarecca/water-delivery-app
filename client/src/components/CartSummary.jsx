@@ -1,9 +1,20 @@
-import { useCart } from "../hooks/useCart"
-
+import { useEffect } from "react";
+import { useCart } from "../hooks/useCart";
 
 export const CartSummary = () => {
 
-    const { totalPrice } = useCart();
+    const { 
+        subTotalPrice,
+        shippingCost,
+        priceTotal, 
+        handlerCalculateSubTotal, 
+        handlerUpdateIncreaseQuantity, 
+        handlerUpdateDecreaseQuantity 
+    } = useCart();
+
+    useEffect(() => {
+        handlerCalculateSubTotal();
+    },[handlerUpdateIncreaseQuantity, handlerUpdateDecreaseQuantity]);
 
     return(
         <div className="cart-summary-container">
@@ -11,23 +22,26 @@ export const CartSummary = () => {
             <div className="cart-summary-content">
                 <div className="cart-summary-div">
                     <span>Subtotal</span>
-                    <span>S/. {totalPrice}</span>
+                    <span>S/. {subTotalPrice}</span>
                 </div>
 
                 <div className="cart-summary-div">
                     <span>Envío</span>
-                    <span>S/. 5</span>
+                    <span>S/. {shippingCost}</span>
                 </div>
 
                 <div className="cart-summary-div">
                     <span>Total</span>
-                    <span>S/. 105</span>
+                    <span>S/. {priceTotal}</span>
                 </div>
             </div>
-
-            <span className="cart-summary-delivery">
-                COSTO DE ENVIO S/ 5 por compra menor a s/ 50
-            </span>
+            
+            {shippingCost > 0 && (
+                <span className="cart-summary-delivery">
+                    COSTO DE ENVIO S/ {shippingCost} por compra menor a s/ 50
+                </span>
+            )}
+            
             
             <button className="cart-summary-button">Realizar Pedido</button>
 

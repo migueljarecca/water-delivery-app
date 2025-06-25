@@ -7,7 +7,9 @@ export const cartSlice = createSlice({
     name: "cart",
     initialState: {
         cart: initialCartData,
-        totalPrice: 0,
+        subTotalPrice: 0,
+        shippingCost: 0,
+        priceTotal: 0,
     },
 
     reducers: {
@@ -47,11 +49,6 @@ export const cartSlice = createSlice({
             state.cart = [];
         },
 
-        calculateTotal: (state) => {
-            state.totalPrice = state.cart.map(item => item.price * item.quantity)
-            .reduce((accumulator, currentAccumulator) => accumulator + currentAccumulator, 0);
-        },
-
         updateIncreaseQuantity: (state, action) => {
             state.cart = state.cart.map(item => {
                 if (item.id == action.payload) {
@@ -83,6 +80,15 @@ export const cartSlice = createSlice({
                 return item;
             }).filter(item => item !== null)
         },
+
+        calculateSubTotal: (state) => {
+            state.subTotalPrice = state.cart.map(item => item.price * item.quantity)
+            .reduce((acc, curr) => acc + curr, 0);
+
+            state.shippingCost = state.subTotalPrice > 50 ? 0 : 5;
+
+            state.priceTotal = state.subTotalPrice  + state.shippingCost;
+        },
     }    
 
 });
@@ -92,7 +98,7 @@ export const {
     addToCart,
     removeCart,
     clearCart,
-    calculateTotal,
+    calculateSubTotal,
     updateIncreaseQuantity,
     updateDecreaseQuantity,
 
