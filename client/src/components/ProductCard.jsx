@@ -2,10 +2,6 @@ import { Link } from "react-router-dom"
 
 export const ProductCard = ({ product, handlerAddCart }) => {
 
-    if (!product) {
-        return <div>No hay productos disponibles</div>
-    }
-
     const{ id, img, title, price } = product;
 
     return(

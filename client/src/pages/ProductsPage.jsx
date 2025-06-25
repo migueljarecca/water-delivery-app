@@ -3,7 +3,7 @@ import { ProductCard } from '../components/ProductCard';
 import { useProduct } from '../hooks/useProduct';
 import { useCart } from '../hooks/useCart';
 
-export const Products = () => {
+export const ProductsPage = () => {
 
 
     const { getProducts, products } = useProduct();
@@ -29,9 +29,13 @@ export const Products = () => {
                 </div>
 
                 <div className="products-content">
-                    {products.map(product => (
-                        <ProductCard key={product.id} product={product} handlerAddCart={handlerAddCart}/>
-                    ))}
+                    {products && products.length > 0 ? (
+                        products.map(product => (
+                            <ProductCard key={product.id} product={product} handlerAddCart={handlerAddCart}/>
+                        ))
+                    ) : (
+                        <p>No hay productos disponibles</p>
+                    )}
                 </div>
 
             </section>

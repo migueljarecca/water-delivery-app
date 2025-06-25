@@ -1,11 +1,12 @@
 import { Outlet } from "react-router"
 import { useCart } from "../../hooks/useCart"
 import { ShopCartCard } from "../../components/ShopCartCard";
+import { CartSummary } from "../../components/CartSummary";
 
 
 export const ShopCartPage = () => {
 
-    const { cart } = useCart();
+    const { cart, handlerRemoveCart, handlerUpdateIncreaseQuantity, handlerUpdateDecreaseQuantity } = useCart();
     
 
     return(
@@ -15,16 +16,27 @@ export const ShopCartPage = () => {
                     <h1>Carro de compras</h1>
 
                     <div className="shop-card-container">
-                        {cart.map(product => (
-                            <ShopCartCard key={product.id} product={product}/>
-                        ))}
+                        {cart && cart.length > 0 ? (
+                            cart.map(product => (
+                                <ShopCartCard 
+                                    key={product.id} 
+                                    product={product} 
+                                    handlerRemoveCart={handlerRemoveCart}
+                                    handlerUpdateIncreaseQuantity={handlerUpdateIncreaseQuantity}
+                                    handlerUpdateDecreaseQuantity={handlerUpdateDecreaseQuantity}/>
+                            ))
+                        ) : (
+                            <p>No hay productos en el carrito </p>
+                        )}
                     </div>
 
                 </div>
 
                 <div className="shop-cart-div-right">
-                    <h1>Realizar pedido</h1>
-                    <Outlet />
+                    <h1>Resumen</h1>
+
+                    <CartSummary />    
+                    {/* <Outlet /> */}
 
                 </div>
 

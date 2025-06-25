@@ -57,7 +57,7 @@ export const cartSlice = createSlice({
                 if (item.id == action.payload) {
                     return {
                         ...item,
-                        quantity: quantity + 1
+                        quantity: item.quantity + 1
                     }
                 }
                 return item;
@@ -72,7 +72,7 @@ export const cartSlice = createSlice({
                     if (item.quantity > 1) {
                         return {
                             ...item,
-                            quantity: quantity - 1
+                            quantity: item.quantity - 1
                         }
                     
                     // if the quantity is 1 we eliminate the product
@@ -80,7 +80,8 @@ export const cartSlice = createSlice({
                         return null;
                     }
                 }
-            })
+                return item;
+            }).filter(item => item !== null)
         },
     }    
 
