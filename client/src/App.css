@@ -422,3 +422,51 @@
   cursor: pointer;
 }
 
+/* Checkout Page */
+/* ============================================================ */
+
+.checkout {
+  padding: 5rem 12%;
+  background: var(--bg-primary);
+}
+
+.checkout .checkout-section {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3rem;
+}
+
+.checkout-section .checkout-container-left {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e1e1e1;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.checkout-container-left .order-summary-heading {
+  font-size: 2.7rem;
+}
+
+.checkout-container-left .checkout-review-order {
+  margin-top: 2rem;
+}
+
+.checkout-review-order .review-order-table {
+  width: 100%;
+  margin: 1rem 0;
+  border: 1px solid #e1e1e1;
+  border-collapse: collapse;
+}
+
+.review-order-table .product-name, .product-sub-total {
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1.6rem;
+  letter-spacing: 0.5px;
+  border: 1px solid #e1e1e1;
+}
+
+
+

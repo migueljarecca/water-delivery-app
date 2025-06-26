@@ -13,6 +13,7 @@ import { StepEmail } from "./pages/cart/StepEmail";
 import { StepAddress } from "./pages/cart/StepAddress";
 import { StepReview } from "./pages/cart/StepReview";
 import { ProductsPage } from "./pages/ProductsPage";
+import { CheckoutPage } from "./pages/checkout/CheckoutPage";
 
 export const AppRoutes = () => {
 
@@ -28,11 +29,13 @@ export const AppRoutes = () => {
 
                 <Route path="/products/details/:id" element={<ProductDetailsPage />}/>
 
-                <Route path="/cart" element={<ShopCartPage />}>
+                <Route path="/cart" element={<ShopCartPage />} />
+                    
+
+                <Route path="/checkout" element={<CheckoutPage />}>
                     <Route index element={<StepEmail />} />
-                    {/* <Route path="email" element={<StepEmail />} /> */}
-                    <Route path="checkout/address" element={<StepAddress />} />
-                    <Route path="checkout/review" element={<StepReview />} />
+                    <Route path="address" element={<StepAddress />} />
+                    <Route path="review" element={<StepReview />} />
                 </Route>
 
 

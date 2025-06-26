@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useCart } from "../hooks/useCart";
+import { Link } from "react-router-dom";
 
 export const CartSummary = () => {
 
@@ -43,7 +44,7 @@ export const CartSummary = () => {
             )}
             
             
-            <button className="cart-summary-button">Realizar Pedido</button>
+            <Link to={"/checkout"} className="cart-summary-link">Realizar Pedido</Link>
 
             <p>Tienes preguntas? </p>
         </div>

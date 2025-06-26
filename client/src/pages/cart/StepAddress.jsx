@@ -8,8 +8,8 @@ export const StepAddress = () => {
             <h1>Paso 2: Dirección</h1>
 
 
-                        <Link to="/cart">Atràs</Link>
-                        <Link to="../checkout/review">Siguiente</Link>
+            <Link to="/cart">Atràs</Link>
+            <Link to="../review">Siguiente</Link>
 
         </>
     )

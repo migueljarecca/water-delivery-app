@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router"
+import { Link } from "react-router"
 import { useCart } from "../../hooks/useCart"
 import { ShopCartCard } from "../../components/ShopCartCard";
 import { CartSummary } from "../../components/CartSummary";
@@ -42,10 +42,6 @@ export const ShopCartPage = () => {
                     <h1>Resumen</h1>
 
                     <CartSummary />
-
-
-                    {/* <Outlet /> */}
-
                 </div>
 
            </section>

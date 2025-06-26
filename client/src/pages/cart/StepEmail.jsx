@@ -6,7 +6,15 @@ export const StepEmail = () => {
 
     return(
         <>
-            <h1>Email</h1>
+            <h1>Información de contacto</h1>
+
+            <div className="address-form-container">
+                <form action="address-form">
+                    <input type="email" />
+                </form>
+            </div>
+
+            <h1>Dirección de envío</h1>
 
             <Link to="checkout/address">Siguiente</Link>
 
