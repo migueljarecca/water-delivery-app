@@ -9,11 +9,11 @@ import { LoginPage } from "./pages/auth/LoginPage";
 import { RegisterPage } from "./pages/auth/RegisterPage";
 import { ProductDetailsPage } from "./pages/ProductDetailsPage";
 import { ShopCartPage } from "./pages/cart/ShopCartPage";
-import { StepEmail } from "./pages/cart/StepEmail";
-import { StepAddress } from "./pages/cart/StepAddress";
 import { StepReview } from "./pages/cart/StepReview";
 import { ProductsPage } from "./pages/ProductsPage";
 import { CheckoutPage } from "./pages/checkout/CheckoutPage";
+import { StepAddressPage } from "./pages/cart/StepAddressPage";
+import { ShippingAddressStep } from "./pages/cart/ShippingAddressStep";
 
 export const AppRoutes = () => {
 
@@ -33,8 +33,8 @@ export const AppRoutes = () => {
                     
 
                 <Route path="/checkout" element={<CheckoutPage />}>
-                    <Route index element={<StepEmail />} />
-                    <Route path="address" element={<StepAddress />} />
+                    <Route index element={<ShippingAddressStep />} />
+                    <Route path="address" element={<StepAddressPage />} />
                     <Route path="review" element={<StepReview />} />
                 </Route>
 

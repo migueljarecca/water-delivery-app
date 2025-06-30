@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
 
-export const StepAddress = () => {
+export const StepAddressPage = () => {
 
     return(
         <>
