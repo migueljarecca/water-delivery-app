@@ -1,7 +1,7 @@
 
 export const AddressValidateForm = (addressForm = {}) => {
 
-    const { email, country, firstName, lastName, address, city, province, postalCode, phone } = addressForm; 
+    const { email, country, firstName, lastName, address, district, province, postalCode, phone } = addressForm; 
 
     const errors = {};
 
@@ -42,11 +42,9 @@ export const AddressValidateForm = (addressForm = {}) => {
         errors.address = "La dirección debe tener al menos 5 caracteres.";
     }
 
-    // City validation
-    if (!city.trim()) {
-        errors.city = "Por favor ingrese una ciudad.";
-    } else if (city.length < 3) {
-        errors.city = "La ciudad debe tener al menos 3 caracteres.";
+    // District validation
+    if (!district.trim()) {
+        errors.district = "Por favor ingrese un distrito.";
     }
 
     // Province validation

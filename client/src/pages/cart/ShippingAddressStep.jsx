@@ -8,7 +8,7 @@ const initialAddressForm = {
     firstName: "",
     lastName: "",
     address: "",
-    city: "",
+    district: "TAC",
     province: "TAC",
     postalCode: "",
     phone: "",
@@ -20,7 +20,7 @@ export const ShippingAddressStep = () => {
     const [ addressForm, setAddressForm ] = useState(initialAddressForm);
     const [ addressErrors, setAddressErrors ] = useState({});
 
-    const { email, country, firstName, lastName, address, city, province, postalCode, phone } = addressForm; 
+    const { email, country, firstName, lastName, address, district, province, postalCode, phone } = addressForm; 
 
     const onInputAddressForm = ({target}) => {
         const {name, value} =  target;
@@ -62,7 +62,9 @@ export const ShippingAddressStep = () => {
                     <p className="address-description">
                         Usaremos este correo electrónico para enviarte detalles y actualizaciones relacionadas con tu pedido.
                     </p>
+                </div>
 
+                <div className="address-shipping-address">
                     <div className={`input-group ${addressErrors ? "input-error" : ""}`}>
                         <label htmlFor="email" className="address-label">Dirección de correo electrónico</label>
                         <input 
@@ -95,9 +97,11 @@ export const ShippingAddressStep = () => {
                                             
                     <p className="address-description">
                         Introduce la dirección a dónde quieras que se entregue tu pedido.
-                    </p>        
-                    
-                    {/* Name and LastName */}
+                    </p>   
+                </div>
+
+                {/* Name and LastName */}
+                <div className="address-shipping-address">
                     <div className="form-row">
                         <div className={`input-group ${addressErrors.firstName ? "input-error" : ""}`}>
                             <label htmlFor="firstName" className="address-label">Nombre</label>
@@ -135,105 +139,127 @@ export const ShippingAddressStep = () => {
                     </div>
                 </div>
 
-             
-
                 {/* Country */}
-                <div className={`address-input-group ${addressErrors.country ? "address-input-error" : ""}`}>
-                        <label htmlFor="country">País/Región</label>
-                        <select
-                            id="country"
-                            name="country"
-                            value={country}
-                            onChange={onInputAddressForm}
-                            // required
-                        >
-                            <option value="PE">Perú</option>
-                            <option value="MX">México</option>
-                            <option value="CO">Colombia</option>
-                        </select>
+               <div className="address-shipping-address">
+                    <div className="form-row">
+                        <div className={`input-group ${addressErrors.country ? "address-input-error" : ""}`}>
+                            <label htmlFor="country" className="address-label">País/Región</label>
+                            <select
+                                className="address-select"
+                                id="country"
+                                name="country"
+                                value={country}
+                                onChange={onInputAddressForm}
+                                // required
+                            >
+                                <option value="PE">Perú</option>
+                                <option value="MX">México</option>
+                                <option value="CO">Colombia</option>
+                            </select>
+                        </div>
                     </div>
-
-                {/* Address */}
-                <div className={`input-group ${addressErrors.address ? "input-error" : ""}`}>
-                    <input
-                        type="text"
-                        id="address"
-                        name="address"
-                        value={address}
-                        onChange={onInputAddressForm}
-                        placeholder=" "
-                        // required
-                    />
-                    <label htmlFor="address">Dirección</label>
-                    {addressErrors.address && <p className="error-message">{addressErrors.address}</p>}
                 </div>
-                
+
                 {/* City and Province */}
-                <div className="form-row">
-                    <div className={`input-group ${addressErrors.city ? "input-error" : ""}`}>
-                        <input
-                        type="text"
-                        id="city"
-                        name="city"
-                        value={city}
-                        onChange={onInputAddressForm}
-                        placeholder=" "
-                        // required
-                        />
-                        <label htmlFor="city">Ciudad</label>
-                        {addressErrors.city && <p className="error-message">{addressErrors.city}</p>}
-                    </div>
+                <div className="address-shipping-address">
+                    <div className="form-row">
+                        <div className={`input-group ${addressErrors.state ? "input-error" : ""}`}>
+                            <label htmlFor="province" className="address-label">Provincia</label>
+                            <select
+                                className="address-select"
+                                id="province"
+                                name="province"
+                                value={province}
+                                onChange={onInputAddressForm}
+                                // required
+                            >
+                                <option value="TAC">Tacna</option>
+                                <option value="CAL">El Callao</option>
+                                <option value="ARE">Arequipa</option>
+                            </select>
+                        </div>
 
-                    <div className={`input-group ${addressErrors.state ? "input-error" : ""}`}>
-                        <label htmlFor="province">Provincia</label>
-                        <select
-                        id="province"
-                        name="province"
-                        value={province}
-                        onChange={onInputAddressForm}
-                        // required
-                        >
-                        <option value="TAC">Tacna</option>
-                        <option value="CAL">El Callao</option>
-                        <option value="ARE">Arequipa</option>
-                        </select>
+                        <div className={`input-group ${addressErrors.state ? "input-error" : ""}`}>
+                            <label htmlFor="district" className="address-label">Distrito</label>
+                            <select
+                                className="address-select"
+                                id="district"
+                                name="district"
+                                value={district}
+                                onChange={onInputAddressForm}
+                                // required
+                            >
+                                <option value="TAC">Tacna</option>
+                                <option value="AA">Alto de la Alianza</option>
+                                <option value="GA">Gregorio Alabarracín</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
+
+                <div className="address-shipping-address">
+                    <div className={`input-group ${addressErrors.address ? "input-error" : ""}`}>
+                        <label htmlFor="address" className="address-label">Dirección</label>
+                        <input
+                            className="address-input"
+                            type="text"
+                            id="address"
+                            name="address"
+                            value={address}
+                            onChange={onInputAddressForm}
+                            placeholder="Mz. F Lte. 8"
+                            // required
+                        />
+                        {addressErrors.address && <p className="error-message">{addressErrors.address}</p>}
+                    </div>
+                </div>
+
 
                 {/* Postal code and telephone */}
-                <div className="form-row">
-                    <div className="input-group">
-                        <input
-                        type="text"
-                        id="postalCode"
-                        name="postalCode"
-                        value={postalCode}
-                        onChange={onInputAddressForm}
-                        placeholder=" "
-                        />
-                        <label htmlFor="postalCode">Código postal (opcional)</label>
-                    </div>
+                <div className="address-shipping-address">
+                    <div className="form-row">
+                        <div className="input-group">
+                        <label htmlFor="postalCode" className="address-label">Código postal (opcional)</label>
+                            <input
+                                className="address-input"
+                                type="text"
+                                id="postalCode"
+                                name="postalCode"
+                                value={postalCode}
+                                onChange={onInputAddressForm}
+                                placeholder="23001"
+                            />
+                        </div>
 
-                    <div className="input-group">
-                        <input
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            value={phone}
-                            onChange={onInputAddressForm}
-                            placeholder=" "
-                        />
-                        <label htmlFor="phone">Teléfono (opcional)</label>
-                        {addressErrors.phone && <p className="error-message">{addressErrors.phone}</p>}
+                        <div className="input-group">
+                            <label htmlFor="phone" className="address-label">Teléfono</label>
+                            <input
+                                className="address-input"
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                value={phone}
+                                onChange={onInputAddressForm}
+                                placeholder="970449496"
+                            />
+                            {addressErrors.phone && <p className="error-message">{addressErrors.phone}</p>}
 
+                        </div>
                     </div>
                 </div>
 
+
                 <button className="address-button" type="submit">
-                        Enviar
+                        Continuar
                 </button>
 
             </form>
+
+            <section className="shipping-method-section">
+                <h2 className="shipping-title">Envío</h2>
+                <span className="shipping-line"></span>
+                <p className="shipping-info">Completa la seccion de arriba para acceder a envío.</p>
+            </section>
 
              
         </div>
