@@ -1,7 +1,7 @@
 
 export const AddressValidateForm = (addressForm = {}) => {
 
-    const { email, country, firstName, lastName, address, district, province, postalCode, phone } = addressForm; 
+    const { email, country, firstName, lastName, address, city, province, postalCode, phone } = addressForm; 
 
     const errors = {};
 
@@ -43,8 +43,8 @@ export const AddressValidateForm = (addressForm = {}) => {
     }
 
     // District validation
-    if (!district.trim()) {
-        errors.district = "Por favor ingrese un distrito.";
+    if (!city.trim()) {
+        errors.city = "Por favor ingrese un distrito.";
     }
 
     // Province validation
@@ -53,12 +53,12 @@ export const AddressValidateForm = (addressForm = {}) => {
     }
 
     // Postcode validation (optional but formatted if exists)
-    if (postalCode.trim() && !/^[0-9]{4,6}$/.test(postalCode)) {
+    if (!postalCode.trim() && !/^[0-9]{4,6}$/.test(postalCode)) {
         errors.postalCode = "El código postal debe tener entre 4 y 6 dígitos.";
     }
 
     // Phone validation (optional but formatted if exists)
-    if (phone.trim() && !/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/.test(phone)) {
+    if (!phone.trim() && !/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/.test(phone)) {
         errors.phone = "El número de teléfono no es válido.";
     }
 

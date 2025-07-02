@@ -14,6 +14,7 @@ import { ProductsPage } from "./pages/ProductsPage";
 import { CheckoutPage } from "./pages/checkout/CheckoutPage";
 import { StepAddressPage } from "./pages/cart/StepAddressPage";
 import { ShippingAddressStep } from "./pages/cart/ShippingAddressStep";
+import { StepPaymentPage } from "./pages/cart/StepPaymentPage";
 
 export const AppRoutes = () => {
 
@@ -34,7 +35,8 @@ export const AppRoutes = () => {
 
                 <Route path="/checkout" element={<CheckoutPage />}>
                     <Route index element={<ShippingAddressStep />} />
-                    <Route path="address" element={<StepAddressPage />} />
+
+                    <Route path="payment" element={<StepPaymentPage />} />
                     <Route path="review" element={<StepReview />} />
                 </Route>
 

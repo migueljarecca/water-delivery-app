@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { AddressValidateForm } from "../../utils/AddressValidateForm";
 import { CheckCircle, InformationCircle, Spinner } from "../../assets/icons/icons";
+import { useNavigate } from "react-router-dom";
 
 const initialAddressForm = {
     email: "",
@@ -8,7 +9,7 @@ const initialAddressForm = {
     firstName: "",
     lastName: "",
     address: "",
-    district: "TAC",
+    city: "TAC",
     province: "TAC",
     postalCode: "",
     phone: "",
@@ -20,12 +21,14 @@ export const ShippingAddressStep = () => {
     const [ addressForm, setAddressForm ] = useState(initialAddressForm);
     const [ addressErrors, setAddressErrors ] = useState({});
 
-    const { email, country, firstName, lastName, address, district, province, postalCode, phone } = addressForm; 
+    const navigate = useNavigate();
+
+    const { email, country, firstName, lastName, address, city, province, postalCode, phone } = addressForm; 
 
     const onInputAddressForm = ({target}) => {
         const {name, value} =  target;
         setAddressForm({
-            ...checkoutForm,
+            ...addressForm,
                 [name]: value,
         });
     };
@@ -42,6 +45,8 @@ export const ShippingAddressStep = () => {
         }
 
         console.log("checkout ", addressForm);
+        navigate("/checkout/payment");
+        
     }
 
     return(
@@ -180,18 +185,18 @@ export const ShippingAddressStep = () => {
                         </div>
 
                         <div className={`input-group ${addressErrors.state ? "input-error" : ""}`}>
-                            <label htmlFor="district" className="address-label">Distrito</label>
+                            <label htmlFor="city" className="address-label">Distrito</label>
                             <select
                                 className="address-select"
-                                id="district"
-                                name="district"
-                                value={district}
+                                id="city"
+                                name="city"
+                                value={city}
                                 onChange={onInputAddressForm}
                                 // required
                             >
                                 <option value="TAC">Tacna</option>
                                 <option value="AA">Alto de la Alianza</option>
-                                <option value="GA">Gregorio Alabarracín</option>
+                                <option value="GA">Gregorio Albarracín</option>
                             </select>
                         </div>
                     </div>
@@ -222,7 +227,7 @@ export const ShippingAddressStep = () => {
                         <label htmlFor="postalCode" className="address-label">Código postal (opcional)</label>
                             <input
                                 className="address-input"
-                                type="text"
+                                type="number"
                                 id="postalCode"
                                 name="postalCode"
                                 value={postalCode}
@@ -258,7 +263,7 @@ export const ShippingAddressStep = () => {
             <section className="shipping-method-section">
                 <h2 className="shipping-title">Envío</h2>
                 <span className="shipping-line"></span>
-                <p className="shipping-info">Completa la seccion de arriba para acceder a envío.</p>
+                <p className="shipping-info">Por favor completa los pasos previos para desbloquear esta sección</p>
             </section>
 
              
