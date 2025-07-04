@@ -1,4 +1,4 @@
-import { useParams } from "react-router"
+import { useParams } from "react-router-dom"
 import { useProduct } from "../hooks/useProduct";
 import { useEffect, useState } from "react";
 import { ProductDetails } from "../components/ProductDetails";

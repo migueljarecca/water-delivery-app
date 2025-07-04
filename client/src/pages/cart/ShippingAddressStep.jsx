@@ -260,11 +260,11 @@ export const ShippingAddressStep = () => {
 
             </form>
 
-            <section className="shipping-method-section">
-                <h2 className="shipping-title">Envío</h2>
-                <span className="shipping-line"></span>
-                <p className="shipping-info">Por favor completa los pasos previos para desbloquear esta sección</p>
-            </section>
+            <div className="wrapper-payment-method">
+                <h2 className="method-title">Metodo de pago</h2>
+                <span className="method-span"></span>
+                <p className="method-description">Por favor completa los pasos previos para desbloquear esta sección</p>
+            </div>
 
              
         </div>

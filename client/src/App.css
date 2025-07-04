@@ -477,6 +477,7 @@
 .address-form-container {
   display: flex;
   flex-direction: column;
+  gap: 2rem;
 }
 
 .address-form-container  .address-form {
@@ -571,6 +572,33 @@
     border-color: var(--border-color-focus);
 } 
 
+.address-form-container .wrapper-payment-method {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+}
+
+.wrapper-payment-method .method-title {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #1f2937;
+}
+
+.wrapper-payment-method .method-span {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #e5e7eb;
+}
+
+.wrapper-payment-method .method-description {
+  font-size: 1.6rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+}
+
 /* Step Payment Page */
 /* ============================================================ */
 
@@ -640,3 +668,74 @@
 .wrapper-info-contact > p {
   font-size: 1.6rem;
 }
+
+.wrapper-payment .payment-description {
+  font-size: 1.6rem;
+}
+
+.wrapper-payment .input-check-group {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.2rem;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+}
+
+.input-check-group .input-check {
+  width: 1.6rem;
+  height: 1.6rem;
+  cursor: pointer;
+}
+
+.input-check-group .payment-label {
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+/* Card Form */
+
+.step-payment-container .card-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card-form .wrapper-card .input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input-group .card-label {
+  font-size: 1.6rem;
+}
+
+.input-group .input-card {
+  font-size: 1.6rem;
+  padding: 1.2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  outline: none;
+
+  transition: border-color 0.3s ease;
+}
+
+.input-group .input-card:focus {
+    border-color: var(--border-color-focus);
+}
+
+.wrapper-card .form-row {
+  display: flex;
+  gap: 2rem;
+}
+
+.wrapper-card .form-row > .input-group {
+  flex: 1;
+  
+
+}
+
+
+
+
