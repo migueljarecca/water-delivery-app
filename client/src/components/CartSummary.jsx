@@ -18,20 +18,22 @@ export const CartSummary = () => {
     },[handlerUpdateIncreaseQuantity, handlerUpdateDecreaseQuantity]);
 
     return(
-        <div className="cart-summary-container">
+        <div className="cart-summary-content">
         
-            <div className="cart-summary-content">
-                <div className="cart-summary-div">
+            <div className="cart-summary-details">
+                <div className="summary-sub-total">
                     <span>Subtotal</span>
                     <span>S/. {subTotalPrice}</span>
                 </div>
 
-                <div className="cart-summary-div">
+                <div className="summary-shipping">
                     <span>Envío</span>
                     <span>S/. {shippingCost}</span>
                 </div>
 
-                <div className="cart-summary-div">
+                <hr className="cart-divider"/>
+
+                <div className="summary-total">
                     <span>Total</span>
                     <span>S/. {priceTotal}</span>
                 </div>
@@ -39,7 +41,8 @@ export const CartSummary = () => {
             
             {shippingCost > 0 && (
                 <span className="cart-summary-delivery">
-                    COSTO DE ENVIO S/ {shippingCost} por compra menor a s/ 50
+                    Agregue mas produtos para cumplir con el mínimo de compra y obtener el envío gratis.
+                    Te falta s/ {50 - subTotalPrice} para obtener el envío gratis.
                 </span>
             )}
             

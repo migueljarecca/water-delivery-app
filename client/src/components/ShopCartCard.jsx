@@ -11,12 +11,12 @@ export const ShopCartCard = ({
     const{ id, img, title, price, quantity } = product;
 
     return(
-        <div className="product-cart-card">
+        <div className="cart-card">
             <div className="wrapper-cart-image">
                 <img src={img} alt="" />
             </div>
             
-            <div className="wrapper-cart-details">
+            <div className="wrapper-cart-content">
                 <h3 className="product-cart-title">{title}</h3>
 
                 <div className="product-cart-quantity">

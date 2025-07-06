@@ -12,13 +12,13 @@ export const ProductCard = ({ product, handlerAddCart }) => {
                 </div>
             </Link>
             
-            <div className="wrapper-details">
+            <div className="wrapper-content">
                 <h3 className="product-title">{title}</h3>
                 <p className="product-price">Precio S/. {price}</p>
             </div>
             
             <button 
-                className="product-card-button"
+                className="btn-add-cart"
                 onClick={() => handlerAddCart(product)}
                 >
                 Agregar al carito

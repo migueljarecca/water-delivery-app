@@ -16,29 +16,27 @@ export const ProductsPage = () => {
     },[]);
 
     return(
-        <main className="products">
+        <main className="products-page">
 
-            <section className="products-container">
-                <div className="products-text">
-                    <h2>Compra aquí tu agua. Nosotros te la llevamos a casa.</h2>
-                    <p>Con nuestro servicio de reparto de agua no tendrás que preocuparte de nada, 
-                        nosotros nos encargamos de que siempre tengas tus botellas de agua cuando las necesites. Con un clic, puedes disfrutar de la pureza y los beneficios de un agua excepcional, lista 
-                        para hidratarte cuando más lo necesites.</p>
+            <section className="intro-section">
+                <h2 className="intro-title">Compra aquí tu agua nosotros te la llevamos a casa.</h2>
+                <p className='intro-description'>Con nuestro servicio de reparto de agua no tendrás que preocuparte de nada, 
+                    nosotros nos encargamos de que siempre tengas tus botellas de agua cuando las necesites. Con un clic, puedes disfrutar de la pureza y los beneficios de un agua excepcional, lista 
+                    para hidratarte cuando más lo necesites.</p>
+            </section>
 
-                    {/* <p></p>     */}
-                </div>
-
-                <div className="products-content">
+            <section>
+                <div className="products-section">
                     {products && products.length > 0 ? (
                         products.map(product => (
                             <ProductCard key={product.id} product={product} handlerAddCart={handlerAddCart}/>
                         ))
                     ) : (
-                        <p>No hay productos disponibles</p>
+                        <p className='empty-message'>No hay productos disponibles</p>
                     )}
                 </div>
-
             </section>
+
         </main>
     )
 }

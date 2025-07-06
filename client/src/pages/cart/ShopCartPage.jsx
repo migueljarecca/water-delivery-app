@@ -2,6 +2,7 @@ import { Link } from "react-router"
 import { useCart } from "../../hooks/useCart"
 import { ShopCartCard } from "../../components/ShopCartCard";
 import { CartSummary } from "../../components/CartSummary";
+import { ArrowLeft } from "../../assets/icons/icons";
 
 
 export const ShopCartPage = () => {
@@ -14,12 +15,12 @@ export const ShopCartPage = () => {
     
 
     return(
-        <main className="shop-cart">
+        <main className="shop-cart-page">
             <section className="shop-cart-section">
-                <div className="shop-cart-div-left">
-                    <h1>Carro de compras</h1>
+                <div className="card-products-container">
+                    <h1 className="cart-title">Carro de compras</h1>
 
-                    <div className="shop-card-container">
+                    <div className="wrapper-card-items">
                         {cart && cart.length > 0 ? (
                             cart.map(product => (
                                 <ShopCartCard 
@@ -30,16 +31,19 @@ export const ShopCartPage = () => {
                                     handlerUpdateDecreaseQuantity={handlerUpdateDecreaseQuantity}/>
                             ))
                         ) : (
-                            <p>No hay productos en el carrito </p>
+                            <p className="empty-card-message">No hay productos en el carrito </p>
                         )}
                     </div>
 
-                    <Link to={"/products"}>Seguir comprando</Link>
+                    <Link to={"/products"} className="back-to-products-link">
+                        <ArrowLeft />
+                        <span>Volver a productos</span>
+                    </Link>
 
                 </div>
 
-                <div className="shop-cart-div-right">
-                    <h1>Resumen</h1>
+                <div className="cart-summary-container">
+                    <h1 className="summary-title">Resumen</h1>
 
                     <CartSummary />
                 </div>

@@ -13,10 +13,10 @@ export const Header = () => {
             <div className="header-div">
                 <nav className="navigation">
                     <ul>
-                        <li><NavLink to={"/about-us"}>QUIENES SOMOS</NavLink></li>
-                        <li><NavLink to={"/products"}>PRODUCTOS</NavLink></li>
-                        <li><NavLink to={"/faq"}>PREGUNTAS FRECUENTES</NavLink></li>
-                        <li><NavLink to={"/contact"}>CONTACTO</NavLink></li>
+                        <li><NavLink to={"/about-us"}>Quiénes somos</NavLink></li>
+                        <li><NavLink to={"/products"}>Productos</NavLink></li>
+                        <li><NavLink to={"/faq"}>Preguntas frecuentes</NavLink></li>
+                        <li><NavLink to={"/contact"}>Contacto</NavLink></li>
                     </ul>
                 </nav>
             </div>
