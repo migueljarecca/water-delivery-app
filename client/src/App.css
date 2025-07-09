@@ -457,9 +457,6 @@
 .cart-summary-container .cart-summary-content {
   display: flex;
   flex-direction: column;
-  border: 1px solid #e1e1e1;
-  border-radius: 7px;
-  padding: 1rem;
   gap: 1rem; 
 }
 
@@ -516,6 +513,12 @@
   color: var(--btn-primary-hover-text);
 }
 
+.cart-summary-content .disabled-link {
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .cart-summary-content p {
   font-size: 1.6rem;
   color: #6b7280;
@@ -526,6 +529,8 @@
 
 /* Checkout Page */
 /* ============================================================ */
+
+/* Order Summary */
 
 .checkout {
   padding: 5rem 12%;
@@ -541,9 +546,7 @@
 .checkout-section .checkout-container-left {
   display: flex;
   flex-direction: column;
-  border: 1px solid #e1e1e1;
-  padding: 1rem;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .checkout-container-left .order-summary-heading {
@@ -551,12 +554,11 @@
 }
 
 .checkout-container-left .checkout-review-order {
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 }
 
 .checkout-review-order .review-order-table {
   width: 100%;
-  margin: 1rem 0;
   border: 1px solid #e1e1e1;
   border-collapse: collapse;
 }
@@ -564,7 +566,7 @@
 .review-order-table .product-name, .product-sub-total {
   padding: 12px 15px;
   text-align: left;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1.6rem;
   letter-spacing: 0.5px;
   border: 1px solid #e1e1e1;

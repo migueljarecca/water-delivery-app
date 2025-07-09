@@ -1,13 +1,29 @@
 import { Link } from "react-router-dom";
+import { formatPrice } from "../utils/formatters/FormatPrice";
+import { useState } from "react";
 
+export const ProductDetails = ({ productDetails, handlerAddCart }) => {
 
-export const ProductDetails = ({ productDetails }) => {
+    const [localQuantity, setLocalQuantity] = useState(1);
 
-    if (!productDetails) {
-        return <div>No hay detalles del producto</div>
-    }
+    const{ id, img, title, price, slug } = productDetails;
 
-    const{ id, img, title, price } = productDetails;
+    // 1. Generate the message for WhatsApp
+    const whatsappMessage = `¡Hola! Me gustaría comprar el siguiente producto:
+
+        *${title}*
+        Link: ${`https://mitienda.com/products/details/`}${slug}
+        Cantidad: ${localQuantity}
+        Precio unitario: ${formatPrice(price)}
+        Total: ${formatPrice(price * localQuantity)}
+
+        ¡Gracias!`;
+
+    // 2. Encode the message to URL
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    
+    // 3. Create the WhatsApp link
+    const whatsappLink = `https://web.whatsapp.com/send?phone=51970449496&text=${encodedMessage}&app_absent=0`;
 
     return(
         <div className="product-details-container">
@@ -18,40 +34,53 @@ export const ProductDetails = ({ productDetails }) => {
             <article className="product-details-article">
                 <div className="wrapper-details">
                     <h2 className="product-title">{title}</h2>
-                    <h3 className="product-price">S/. {price}</h3>
+                    <h3 className="product-price">{formatPrice(price)}</h3>
                 </div>
 
                 <div className="product-details-quantity">
                     <p>cantidad</p>
                     <div className="quantity-div">
-                        <input type="button" className="quantity-button" value={"-"}></input>
-                        <input 
-                            type="number" 
-                            value={1} 
-                            className="quantity"
-                            name="quantity"
-                            aria-label="Cantidad de productos"
-                            min={1}
-                            step={1}
-                            autoComplete="off" 
-                            placeholder=""
-                            inputMode="numeric"   
-                            >
-
-                        </input>
-                        <input type="button" className="quantity-button" value={"+"}></input>
+                        <button 
+                                type="button" 
+                                className="quantity-button"
+                                disabled={localQuantity <= 1}
+                                onClick={() => setLocalQuantity(prev => Math.max(prev - 1, 1))}>
+                                    -
+                            </button>
+                            <span 
+                                className="quantity"
+                                aria-label="Cantidad de productos">
+                                {localQuantity}
+                            </span>
+                            <button 
+                                type="button" 
+                                className="quantity-button" 
+                                onClick={() => setLocalQuantity(prev => prev + 1)}>
+                                    +
+                            </button>
                     </div>
                          
                 </div>
                     
                 <div className="product-details-div-link">
-                    <Link className="link-whats-app">
+                    <a 
+                        className="link-whats-app"
+                        href={whatsappLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                    >
                         Pedir por WhatsApp
-                    </Link>
+                    </a>
 
-                    <Link to={"/cart"} className="link-cart">
-                        Agregar al carrito
-                    </Link>
+                    <button 
+                        className="btn-add-cart"
+                        onClick={() => handlerAddCart({
+                            ...productDetails, 
+                            quantity: localQuantity
+                        })}
+                    >
+                        Agregar al carito
+                    </button>
                 </div>
                 
             </article>

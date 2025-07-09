@@ -2,6 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialCartData = [];
 
+const calculatePriceTotal = (state) => {
+        state.subTotalPrice = state.cart.map(item => item.price * item.quantity)
+        .reduce((acc, curr) => acc + curr, 0);
+
+        state.shippingCost = state.subTotalPrice >= 50 ? 0 : 5;
+        state.priceTotal = state.subTotalPrice  + state.shippingCost;
+}
+
 export const cartSlice = createSlice({
 
     name: "cart",
@@ -14,6 +22,11 @@ export const cartSlice = createSlice({
 
     reducers: {
         addToCart: (state, action) => {
+
+            // We check if the quantity is defined in the action payload
+            const newQuantity = action.payload.quantity !== undefined ? 
+                   action.payload.quantity : 
+                   1;
             
             // We check if the product is already in the cart
             const productInCartIndex = state.cart.findIndex((item => item.id === action.payload.id));
@@ -24,7 +37,7 @@ export const cartSlice = createSlice({
                     if (item.id == action.payload.id) {
                         return {
                             ...item,
-                            quantity: item.quantity + 1
+                            quantity: newQuantity
                         }
                     }
                     return item;
@@ -35,18 +48,21 @@ export const cartSlice = createSlice({
                 state.cart = [
                     ...state.cart, {
                         ...action.payload,
-                        quantity: 1
+                        quantity: newQuantity,
                     }
                 ]
             }
+            calculatePriceTotal(state);
         },
 
         removeCart: (state, action) => {
             state.cart = state.cart.filter(item => item.id !== action.payload);
+            calculatePriceTotal(state);
         },
 
         clearCart: (state) => {
             state.cart = [];
+            calculatePriceTotal(state);
         },
 
         updateIncreaseQuantity: (state, action) => {
@@ -59,6 +75,7 @@ export const cartSlice = createSlice({
                 }
                 return item;
             })
+            calculatePriceTotal(state);
         },
 
         updateDecreaseQuantity: (state, action) => {
@@ -79,16 +96,9 @@ export const cartSlice = createSlice({
                 }
                 return item;
             }).filter(item => item !== null)
+            calculatePriceTotal(state);
         },
 
-        calculateSubTotal: (state) => {
-            state.subTotalPrice = state.cart.map(item => item.price * item.quantity)
-            .reduce((acc, curr) => acc + curr, 0);
-
-            state.shippingCost = state.subTotalPrice > 50 ? 0 : 5;
-
-            state.priceTotal = state.subTotalPrice  + state.shippingCost;
-        },
     }    
 
 });
@@ -98,7 +108,6 @@ export const {
     addToCart,
     removeCart,
     clearCart,
-    calculateSubTotal,
     updateIncreaseQuantity,
     updateDecreaseQuantity,
 

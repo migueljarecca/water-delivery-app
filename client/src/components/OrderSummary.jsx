@@ -1,7 +1,12 @@
 
+// This component displays the order summary in the checkout process.
+// It includes the items in the cart, their quantities, and the total price.
+
+import { useCart } from "../hooks/useCart"
+
 export const OrderSummary = () => {
 
-
+    const { cart, subTotalPrice, shippingCost, priceTotal } = useCart();
 
     return(
         <>
@@ -18,28 +23,30 @@ export const OrderSummary = () => {
                     </thead>
 
                     <tbody>
-                        <tr className="cart-item">
-                            <td className="product-name">
-                                Pack Cesta&nbsp;
-                                <strong className="product-quantity">×&nbsp;1</strong>
-                            </td>
-                            <td className="product-sub-total">
-                                <span className="price-amount">
-                                    <bdi>19,80<span className="price-symbol">€</span></bdi>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr className="cart-item">
-                            <td className="product-name">
-                                Pack Formato Pequeño&nbsp;
-                                <strong className="product-quantity">×&nbsp;1</strong>
-                            </td>
-                            <td className="product-sub-total">
-                                <span className="price-amount">
-                                    <bdi>7,00<span className="currency-symbol">€</span></bdi>
-                                </span>
-                            </td>
-                        </tr>
+                        {cart && cart.length > 0 ? (
+                            cart.map(item => (
+                                <tr className="cart-item" key={item.id}>
+                                    <td className="product-name">
+                                        {item.title}&nbsp;
+                                        <strong className="product-quantity">×&nbsp;{item.quantity}</strong>
+                                    </td>
+                                    <td className="product-sub-total">
+                                        <span className="price-amount">
+                                            <bdi><span className="price-symbol">s/.&nbsp;</span>{item.price * item.quantity}</bdi>
+                                        </span>
+                                    </td>
+                                </tr>
+                        ))
+                        ) : (
+                            <tr className="cart-item">
+                                <td className="product-name">No hay productos en el carrito</td>
+                                <td className="product-sub-total">
+                                    <span className="price-amount">
+                                        <bdi><span className="currency-symbol">s/.&nbsp;</span>0.00</bdi>
+                                    </span>
+                                </td>
+                            </tr>
+                        )}
                     </tbody>
 
                     <tfoot>
@@ -47,7 +54,7 @@ export const OrderSummary = () => {
                             <th className="product-name">Subtotal</th>
                             <td className="product-sub-total">
                                 <span className="price-amount">
-                                <bdi>26,80<span className="currency-symbol">€</span></bdi>
+                                <bdi><span className="currency-symbol">s/.&nbsp;</span>{subTotalPrice}</bdi>
                                 </span>
                             </td>
                         </tr>
@@ -56,7 +63,7 @@ export const OrderSummary = () => {
                             <th className="product-name">Envío</th>
                             <td className="product-sub-total">
                                 <span className="price-amount">
-                                    <bdi>7,00<span className="currency-symbol">€</span></bdi>
+                                    <bdi><span className="currency-symbol">s/.&nbsp;</span>{shippingCost > 0 ? shippingCost : 0.00}</bdi>
                                 </span>
                             </td>
                         </tr>
@@ -66,7 +73,7 @@ export const OrderSummary = () => {
                             <td className="product-sub-total">
                                 <strong>
                                     <span className="price-amount">
-                                        <bdi>26,80<span className="currency-symbol">€</span></bdi>
+                                        <bdi><span className="currency-symbol">s/.&nbsp;</span>{priceTotal}</bdi>
                                     </span>
                                 </strong>
                             </td>

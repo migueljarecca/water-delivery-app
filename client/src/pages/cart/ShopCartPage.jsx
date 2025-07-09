@@ -4,15 +4,16 @@ import { ShopCartCard } from "../../components/ShopCartCard";
 import { CartSummary } from "../../components/CartSummary";
 import { ArrowLeft } from "../../assets/icons/icons";
 
-
 export const ShopCartPage = () => {
 
     const { cart, 
+            subTotalPrice,
+            shippingCost,
+            priceTotal, 
             handlerRemoveCart, 
             handlerUpdateIncreaseQuantity, 
             handlerUpdateDecreaseQuantity, 
         } = useCart();
-    
 
     return(
         <main className="shop-cart-page">
@@ -45,7 +46,11 @@ export const ShopCartPage = () => {
                 <div className="cart-summary-container">
                     <h1 className="summary-title">Resumen</h1>
 
-                    <CartSummary />
+                    <CartSummary 
+                        subTotalPrice={subTotalPrice}
+                        shippingCost={shippingCost}
+                        priceTotal={priceTotal}
+                    />
                 </div>
 
            </section>

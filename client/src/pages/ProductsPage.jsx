@@ -12,6 +12,7 @@ export const ProductsPage = () => {
     // console.log(JSON.stringify(productsList, null, 2));
 
     useEffect(() => {
+        console.log('ProductsPage useEffect');
         getProducts();
     },[]);
 

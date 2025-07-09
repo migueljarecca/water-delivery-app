@@ -2,20 +2,15 @@ import { useEffect } from "react";
 import { useCart } from "../hooks/useCart";
 import { Link } from "react-router-dom";
 
-export const CartSummary = () => {
+export const CartSummary = ({ subTotalPrice, shippingCost, priceTotal }) => {
 
-    const { 
-        subTotalPrice,
-        shippingCost,
-        priceTotal, 
-        handlerCalculateSubTotal, 
-        handlerUpdateIncreaseQuantity, 
-        handlerUpdateDecreaseQuantity 
-    } = useCart();
+    // const {  
+    //     handlerCalculateSubTotal, 
+    // } = useCart();
 
-    useEffect(() => {
-        handlerCalculateSubTotal();
-    },[handlerUpdateIncreaseQuantity, handlerUpdateDecreaseQuantity]);
+    // useEffect(() => {
+    //     handlerCalculateSubTotal();
+    // },[priceTotal]);
 
     return(
         <div className="cart-summary-content">
@@ -47,7 +42,12 @@ export const CartSummary = () => {
             )}
             
             
-            <Link to={"/checkout"} className="cart-summary-link">Realizar Pedido</Link>
+            <Link 
+                to={"/checkout"} 
+                className={`cart-summary-link ${subTotalPrice <= 0 ? "disabled-link" : ""}`}
+            >
+                Realizar Pedido
+            </Link>
 
             <p>Tienes preguntas? </p>
         </div>
