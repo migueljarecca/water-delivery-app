@@ -20,29 +20,29 @@ export const ShopCartCard = ({
                 <h3 className="product-cart-title">{title}</h3>
 
                 <div className="product-cart-quantity">
-                        <p>cantidad:</p>
-                        <div className="quantity-div">
-                            <button 
-                                type="button" 
-                                className="quantity-button"
-                                disabled={quantity <= 1}
-                                onClick={() => handlerUpdateDecreaseQuantity(id)}>
-                                    -
-                            </button>
-                            <span 
-                                className="quantity"
-                                aria-label="Cantidad de productos">
-                                {quantity}
-                            </span>
-                            <button 
-                                type="button" 
-                                className="quantity-button" 
-                                onClick={() => handlerUpdateIncreaseQuantity(id)}>
-                                    +
-                            </button>
-                        </div>
-                            
-                    </div>
+                    <p>cantidad:</p>
+                    <div className="quantity-div">
+                        <button 
+                            type="button" 
+                            className="quantity-button"
+                            disabled={quantity <= 1}
+                            onClick={() => handlerUpdateDecreaseQuantity(id)}>
+                                -
+                        </button>
+                        <span 
+                            className="quantity"
+                            aria-label="Cantidad de productos">
+                            {quantity}
+                        </span>
+                        <button 
+                            type="button" 
+                            className="quantity-button" 
+                            onClick={() => handlerUpdateIncreaseQuantity(id)}>
+                                +
+                        </button>
+                    </div>          
+                </div>
+                
             </div>
             
             <div className="wrapper-cart-price">

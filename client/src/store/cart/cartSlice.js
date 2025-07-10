@@ -18,6 +18,7 @@ export const cartSlice = createSlice({
         subTotalPrice: 0,
         shippingCost: 0,
         priceTotal: 0,
+        showCartTooltip: false,
     },
 
     reducers: {
@@ -53,6 +54,7 @@ export const cartSlice = createSlice({
                 ]
             }
             calculatePriceTotal(state);
+
         },
 
         removeCart: (state, action) => {
@@ -99,6 +101,13 @@ export const cartSlice = createSlice({
             calculatePriceTotal(state);
         },
 
+        openShowCartTooltip: (state) => {
+            state.showCartTooltip = true;
+        },
+
+        closeShowCartTooltip: (state) => {
+            state.showCartTooltip = false;
+        },
     }    
 
 });
@@ -110,6 +119,10 @@ export const {
     clearCart,
     updateIncreaseQuantity,
     updateDecreaseQuantity,
+
+    showCartTooltip,
+    openShowCartTooltip,
+    closeShowCartTooltip,
 
 } = cartSlice.actions;
 

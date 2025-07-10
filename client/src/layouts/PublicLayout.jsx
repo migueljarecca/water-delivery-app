@@ -1,8 +1,7 @@
-// import { TopBanner } from "../components/TopBanner";
+
 import { TopBanner } from "../components/TopBanner";
 import { Header } from "../components/Header";
 import { Outlet } from "react-router"
-
 
 export const PublicLayout = () => {
 

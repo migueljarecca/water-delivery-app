@@ -1,7 +1,11 @@
 import { Link, NavLink } from "react-router"
 import { Logo, ShoppingCart, User } from "../assets/icons/icons"
+import { useCart } from "../hooks/useCart";
+import { MiniCartModal } from "./MiniCartModal";
 
 export const Header = () => {
+
+    const { cart, showCartTooltip } = useCart();
 
     return(
         <header className="header">
@@ -21,13 +25,27 @@ export const Header = () => {
                 </nav>
             </div>
 
-            <div className="header-icons-container">
-                <Link to={"/login"} className="header-icon">
+            <div className="header-wrapper-out">
+                <Link to={"/login"} className="header-icon-link">
                     <User />
                 </Link>
-                <Link to={"/cart"} className="header-icon">
-                    <ShoppingCart />
-                </Link>
+                <div className="header-wrapper-in">
+
+                    <Link to={"/cart"} className="header-icon-link">
+                        <ShoppingCart />
+                        {cart.length > 0 && (
+                            <div className="cart-count-wrapper">
+                                <span className="cart-count">{cart.length}</span>
+                            </div>
+                        )}
+                    </Link>
+                    {showCartTooltip && (
+                        <div className="cart-tooltip-wrapper">
+                            <MiniCartModal />
+                        </div>
+                    )}
+                </div>
+
             </div>
         </header>
     )
