@@ -7,7 +7,7 @@ export const Header = () => {
 
     const { cart, showCartTooltip } = useCart();
 
-    return(
+    return (
         <header className="header">
 
             <NavLink to="/" end className="logo" aria-label="Ir a inicio">
@@ -26,9 +26,12 @@ export const Header = () => {
             </div>
 
             <div className="header-wrapper-out">
-                <Link to={"/login"} className="header-icon-link">
-                    <User />
-                </Link>
+                <div className="header-wrapper-in">
+                    <Link to={"/login"} className="header-icon-link">
+                        <User />
+                    </Link>
+                </div>
+
                 <div className="header-wrapper-in">
 
                     <Link to={"/cart"} className="header-icon-link">
