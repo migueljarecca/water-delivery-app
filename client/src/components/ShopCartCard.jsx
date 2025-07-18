@@ -1,4 +1,5 @@
 import { Trash } from "../assets/icons/icons";
+import { formatPrice } from "../utils/formatters/formatPrice";
 
 
 export const ShopCartCard = ({ 
@@ -50,7 +51,7 @@ export const ShopCartCard = ({
                 <div className="cart-icon-div" onClick={() => handlerRemoveCart(id)}>
                     <Trash />
                 </div>
-                <p className="product-cart-price">S/. {price}</p>
+                <p className="product-cart-price">{formatPrice(price)}</p>
 
             </div>
 
