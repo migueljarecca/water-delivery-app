@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router"
-import { Logo, ShoppingCart, User } from "../assets/icons/icons"
+import { HomeModern, ShoppingCart, User } from "../assets/icons/icons"
 import { useCart } from "../hooks/useCart";
 import { MiniCartModal } from "./MiniCartModal";
 
@@ -11,7 +11,7 @@ export const Header = () => {
         <header className="header">
 
             <NavLink to="/" end className="logo" aria-label="Ir a inicio">
-                <Logo />
+                <HomeModern />
             </NavLink>
 
             <div className="header-div">
